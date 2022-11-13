@@ -2,11 +2,11 @@
     <section class="hello">
         <div class="iner-container content">
             <div class="foreground">
-                <div class="orange">hi, i am</div>
-                <div class="white">Web Developer</div>
+                <div class="orange"><div :class="loaded ? 'after' : 'before'">hi, i am</div></div>
+                <div class="white"><div :class="loaded ? 'after' : 'before'">Web Developer</div></div>
             </div>
-            <div class="background">
-                <span>Hello</span>
+            <div :class="loaded ? 'background after' : 'background before'">
+                <div>Hello</div>
             </div>
             <div class="vector">
                 <img class="img-1" src="../assets/Vector.svg" alt=""/>
@@ -14,18 +14,38 @@
                 <img class="img-3" src="../assets/Vector.svg" alt=""/>
             </div>
         </div>
+        <div class="drop1" ></div>
+        <div class="drop2" ></div>
+        <div class="drop3" ></div>
     </section>  
 </template>
 
 <script>
 export default {
-    name: 'hellosection'
+    name: 'hellosection',
+    data() {
+        return {
+            loaded: false,
+            incline: 45
+        }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            setTimeout(() => {
+                this.loaded = true 
+            }, 0);
+        })
+    },
+    computed: {
+
+    }
 }
 </script>
 
 <style lang="scss">
     :root{
-        --helloheight: calc(100vh - 45px)
+        --helloheight: calc(100vh - 45px);
+        --incline: calc(100vh/100vw);
     }
     .iner-container{
         box-sizing: content-box;
@@ -34,6 +54,95 @@ export default {
         max-width: 1350px;
     }
     .hello{
+        overflow: hidden;
+        position: relative;
+        @keyframes dropmove1 {
+            0%{
+                top: -300px;
+                right: 30px;
+            }
+            10%{
+                top: -300px;
+                right: 30px;
+            }
+            40%{
+                top: 110vh;
+                right: 140vw;
+            }
+            100%{
+                top: 110vh;
+                right: 140vw;
+            }
+        }
+        @keyframes dropmove2 {
+            0%{
+                top: -300px;
+                right: 0px;
+            }
+            10%{
+                top: -300px;
+                right: 0px;
+            }
+            40%{
+                top: 110vh;
+                right: 110vw;
+            }
+            100%{
+                top: 110vh;
+                right: 110vw;
+            }
+        }
+        @keyframes dropmove3 {
+            0%{
+                top: -300px;
+                right: -30px;
+            }
+            10%{
+                top: -300px;
+                right: -30px;
+            }
+            40%{
+                top: 110vh;
+                right: 105vw;
+            }
+            100%{
+                top: 110vh;
+                right: 105vw;
+            }
+        }
+        .drop1{
+            z-index: 0;
+            transform-origin: bottom;
+            position: absolute;
+            animation: dropmove1 6s ease infinite 1s forwards;
+            width: 5px;
+            height: 200px;
+            background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
+            border-radius: 50px;
+            transform: rotate(45deg);
+        }
+        .drop2{
+            z-index: 0;
+            transform-origin: bottom;
+            position: absolute;
+            animation: dropmove2 9s ease infinite 1.1s forwards;
+            width: 5px;
+            height: 200px;
+            background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
+            border-radius: 50px;
+            transform: rotate(45deg);
+        }
+        .drop3{
+            z-index: 0;
+            transform-origin: bottom;
+            position: absolute;
+            animation: dropmove3 7s ease infinite 1.3s forwards;
+            width: 5px;
+            height: 200px;
+            background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
+            border-radius: 50px;
+            transform: rotate(45deg);
+        }
         height: var(--helloheight);
         .content{
             @keyframes moveright{
@@ -62,45 +171,73 @@ export default {
                 animation: moveright 30s ease infinite alternate;
                 z-index: 2;
                 .orange{
+                    overflow: hidden;
                     font-size: 32px;
                     color: #FF6B00;
+                    .before{
+                        transition-property: transform;
+                        transition-duration: 0.3s;
+                        transform-origin: bottom left ;
+                        transform: rotate(90deg);
+                    }
+                    .after{
+                        transition-property: transform;
+                        transition-duration: 0.3s;
+                        transform-origin: bottom left ;
+                        transform: rotate(0);
+                    }
                 }
                 .white{
+                    overflow: hidden;
                     font-size: 80px;
+                    .before{
+                        transition-property: transform;
+                        transition-duration: 0.3s;
+                        transition-delay: 0.5s;
+                        transform-origin: bottom left ;
+                        transform: rotate(90deg);
+                    }
+                    .after{
+                        transition-property: transform;
+                        transition-duration: 0.3s;
+                        transition-delay: 0.5s;
+                        transform-origin: bottom left ;
+                        transform: rotate(0);
+                    }
                 }
             }
             .background{
                 @keyframes changeblur {
                     0%{
-                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #181717;
+                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #181717;
                         background-clip: text;
                         filter: blur(0px);
                         -webkit-text-fill-color: transparent;
                         right: 0;
                     }
                     40%{
-                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #181717;
+                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #181717;
                         background-clip: text;
                         filter: blur(3px);
                         -webkit-text-fill-color: transparent;
                         right: 35px;
                     }
                     60%{
-                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #181717;
+                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #181717;
                         background-clip: text;
                         filter: blur(3px);
                         -webkit-text-fill-color: transparent;
                         right: 35px;
                     }
                     90%{
-                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #181717;
+                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #181717;
                         background-clip: text;
                         filter: blur(0px);
                         -webkit-text-fill-color: transparent;
                         right: 0;
                     }
                     100%{
-                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #181717;
+                        background: radial-gradient(50% 95.85% at 73.05% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #181717;
                         background-clip: text;
                         filter: blur(0px);
                         -webkit-text-fill-color: transparent;
@@ -113,6 +250,18 @@ export default {
                 color: #181717;
                 font-weight: 500;
                 animation: changeblur 30s ease infinite alternate;
+                &.before{
+                    transition-property: opacity;
+                    transition-duration: 1s;
+                    transition-delay: 1s;
+                    opacity: 0%;
+                }
+                &.after{
+                    transition-property: opacity;
+                    transition-duration: 1s;
+                    transition-delay: 1s;
+                    opacity: 100%;
+                }
             }
             .vector{
                 margin-bottom: 20px;
@@ -125,26 +274,27 @@ export default {
                 img{
                     width: 40px;
                     height: 27px;
+                    opacity: 0%;
                 }
                 @keyframes vectors {
                     0%{
-                        opacity: 100%;
+                        opacity: 0%;
                     }
                     30%{
-                        opacity: 0%;
+                        opacity: 100%;
                     }
                     100%{
-                        opacity: 0%;
+                        opacity: 100%;
                     }
                 }
                 .img-1{
-                    animation: vectors 1.5s linear infinite alternate 0s;
+                    animation: vectors 1.5s linear infinite alternate 1s;
                 }
                 .img-2{
-                    animation: vectors 1.5s linear infinite alternate 0.5s;
+                    animation: vectors 1.5s linear infinite alternate 1.5s;
                 }
                 .img-3{
-                    animation: vectors 1.5s linear infinite alternate 1s;
+                    animation: vectors 1.5s linear infinite alternate 2s;
                 }
             }
         }

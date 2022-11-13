@@ -8,9 +8,9 @@
                 <div class="logo__title">Portfolio</div>
             </div>
             <ul class="content__nav nav">
-                <li class="nav__item">Contacts</li>
-                <li class="nav__item">Works</li>
-                <li class="nav__item">Skills</li>
+                <li class="nav__item"><div class="item">Contacts</div> <div class="background"></div></li>
+                <li class="nav__item"><div class="item">Works</div> <div class="background"></div></li>
+                <li class="nav__item"><div class="item">Skills</div> <div class="background"></div></li>
             </ul>
         </div>
     </header>
@@ -48,13 +48,45 @@ export default {
                 }
             }
             .nav{
+                height: 100%;
                 display: flex;
                 align-items: center;
                 .nav__item{
+                    cursor: pointer;
+                    position: relative;
                     font-size: 14px;
                     font-weight: 300;
+                    height: 100%;
+                    display: flex;
+                    align-items:center;
                     &:not(:last-child){
-                        margin-right: 20px;
+                        margin-right: 15px;
+                    }
+                    &:hover{
+                        .item{
+                            color: #181717;
+                        }
+                        .background{
+                            height: 100%;
+                        }
+                    }
+                    .item{
+                        padding: 0 3px;
+                        font-weight: 500;
+                        z-index: 1;
+                        transition-property: color;
+                        transition-duration: 0.5s;
+                    }
+                    .background{
+                        transition-property: height;
+                        transition-duration: 0.5s;
+                        z-index: 0;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 0;
+                        background-color: #FF6B00;
                     }
                 }
             }
