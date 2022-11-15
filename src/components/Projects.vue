@@ -35,8 +35,12 @@ export default {
     }
     .sites{
         height: max-content;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 300px);
-        grid-template-rows: repeat(auto-fill, 300px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        div{
+            height: 300px;
+            width: 100%;
+        }
     }
 </style>
