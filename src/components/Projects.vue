@@ -3,19 +3,22 @@
         <div class="projects-content iner-container">
             <div class="title">My projects</div>
             <div class="sites">
-                <div>efrf</div>
-                <div>tfhfy</div>
-                <div>uilkhj</div>
-                <div>erfeggf</div>
-                <div>tjuyl</div>
+                <projectcard/>
+                <projectcard/>
+                <projectcard/>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+import projectcard from '../components/ProjectCard.vue'
 export default {
-    name: 'projects'
+    name: 'projects',
+    components: {
+        projectcard
+    }
+    
 }
 </script>
 
@@ -38,9 +41,6 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        div{
-            height: 300px;
-            width: 100%;
-        }
+        gap: 30px;
     }
 </style>

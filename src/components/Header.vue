@@ -24,9 +24,13 @@ export default {
 
 <style lang="scss">
     .header{
+        box-shadow: 1px 1px 8px black;
+        position: fixed;
+        top: 0;
+        z-index: 10;
         height: 45px;
         background-color: #181717;
-        widows: 100%;
+        width: 100%;
         .content{
             height: inherit;
             display: flex;

@@ -54,6 +54,7 @@ export default {
         max-width: 1350px;
     }
     .hello{
+        margin-top: 45px;
         overflow: hidden;
         position: relative;
         @keyframes dropmove1 {
