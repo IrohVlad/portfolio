@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header :class="loaded ? 'header' : 'before'">
         <div class="_container content">
             <div class="content__logo logo">
                 <div class="logo__icon">
@@ -18,12 +18,31 @@
 
 <script>
 export default {
-    name: 'header'
+    name: 'header',
+    data () {
+        return {
+            loaded: false
+        }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            setTimeout(() => {
+                this.loaded = true 
+            }, 0);
+        })
+    },
 }
 </script>
 
 <style lang="scss">
+    .before{
+        transform: translateY(-50px);
+    }
     .header{
+        transition-property: transform;
+        transition-duration: 0.5s;
+        transition-delay: 1s;
+        transform: translateY(0px);
         box-shadow: 1px 1px 8px black;
         position: fixed;
         top: 0;

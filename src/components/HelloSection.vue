@@ -59,63 +59,63 @@ export default {
         position: relative;
         @keyframes dropmove1 {
             0%{
-                top: -300px;
-                right: 30px;
+                top: -1000px;
+                right: -1000px;
             }
             10%{
-                top: -300px;
-                right: 30px;
+                top: -1000px;
+                right: -1000px;
             }
             40%{
-                top: 110vh;
-                right: 140vw;
+                top: calc(100vh + 1000px);
+                right: calc(100vh + 1000px);
             }
             100%{
-                top: 110vh;
-                right: 140vw;
+                top: calc(100vh + 1000px);
+                right: calc(100vh + 1000px);
             }
         }
         @keyframes dropmove2 {
             0%{
-                top: -300px;
-                right: 0px;
+                top: -1000px;
+                right: calc(-30vh);
             }
             10%{
-                top: -300px;
-                right: 0px;
+                top: -1000px;
+                right: calc(-30vh);
             }
             40%{
-                top: 110vh;
-                right: 110vw;
+                top: calc(100vh + 1000px);
+                right: calc(130vh);
             }
             100%{
-                top: 110vh;
-                right: 110vw;
+                top: calc(130vh + 1000px);
+                right: calc(130vh);
             }
         }
         @keyframes dropmove3 {
             0%{
-                top: -300px;
-                right: -30px;
+                top: -1000px;
+                right: -1000px;
             }
             10%{
-                top: -300px;
-                right: -30px;
+                top: -1000px;
+                right: -500px;
             }
-            40%{
-                top: 110vh;
-                right: 105vw;
+            60%{
+                top: calc(130vh + 1000px);
+                right: calc(80vh + 1000px);
             }
             100%{
-                top: 110vh;
-                right: 105vw;
+                top: calc(130vh + 1000px);
+                right: calc(80vh + 500px);
             }
         }
         .drop1{
             z-index: 0;
             transform-origin: bottom;
             position: absolute;
-            animation: dropmove1 6s ease infinite 1s forwards;
+            animation: dropmove1 10s ease infinite 1s forwards;
             width: 5px;
             height: 200px;
             background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
@@ -272,6 +272,8 @@ export default {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                box-sizing: border-box;
+                transform: translateX(-25px);
                 img{
                     width: 40px;
                     height: 27px;

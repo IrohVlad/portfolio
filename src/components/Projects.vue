@@ -43,4 +43,13 @@ export default {
         align-items: center;
         gap: 30px;
     }
+    @media(max-width: 750px){
+        .title{
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 39px;
+        color: #FF6B00;
+        margin: 25px 0;
+    }
+    }
 </style>
