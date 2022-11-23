@@ -1,16 +1,15 @@
 <template>
     <div class="site">
         <div class="card">
-            <img src="../assets/site.png" alt="">
+            <a :href="projectdata.link">
+                <img :src='"http://62.113.105.113:5000/"+projectdata.img' alt=""/>
+            </a>
         </div>
         <div class="content showload">
-            <div class="text">Portfolio site for famos designer, Dmitry Filippov. It made frontend made with React. Backend made with Node js, Express, PostgreSQL. Have functions adding pictures and cotegories. Portfolio site for famos designer, Dmitry Filippov. It made frontend made with React. Backend made with Node js, Express, PostgreSQL. Have functions adding pictures and cotegories.</div>
+            <div class="text">{{projectdata.desc}}</div>
             <div class="tech">
-                <div class="icon">
-                    <img src="../assets/react.svg" alt=""/>
-                </div>
-                <div class="icon">
-                    <img src="../assets/node.svg" alt=""/>
+                <div v-for="icon in projectdata.tech" class="icon">
+                    <img :src='"http://62.113.105.113:5000/"+icon.name' alt=""/>
                 </div>
             </div>
         </div>
@@ -21,6 +20,20 @@
 <script>
 export default {
     name: 'projectcard',
+    props: ['projectdata'],
+    mounted() {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(item => {
+                if (item.isIntersecting){
+                    item.target.classList.add('shown')
+                    observer.unobserve(item.target)
+                }
+            });
+        }, {threshold: 0.5});
+        document.querySelectorAll('.showload').forEach(item => {
+            observer.observe(item);
+        })
+    },
 }
 </script>
 

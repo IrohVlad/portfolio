@@ -9,9 +9,15 @@
                     I am a developer who work with frontend and backend sides of website. Creation of quality site layouts with pretty animations and transitions, working with databases not big problem for me. This work
                 </div>
                 <ul class="data__links">
-                    <img src="../assets/mail.svg" alt=""/>
-                    <img src="../assets/vk.svg" alt=""/>
-                    <img src="../assets/git.svg" alt=""/>
+                    <a href="mailto:166vlad@gmail.ru" target="_blank">
+                        <img src="../assets/mail.svg" alt=""/>
+                    </a>
+                    <a href="https://vk.com/fillippov_vlad" target="_blank">
+                        <img src="../assets/vk.svg" alt=""/>
+                    </a>
+                    <a href="https://github.com/IrohVlad" target="_blank">
+                        <img src="../assets/git.svg" alt=""/>
+                    </a>
                 </ul>
             </div>
             <div class="content__avatar">
@@ -81,11 +87,13 @@ export default {
                     margin-bottom: 25px;
                 }
                 .data__links{
-                    img{
-                        width: 30px;
-                        height: 30px;
+                    a{
+                        img{
+                            width: 30px;
+                            height: 30px;
+                        }
                         &:not(:last-child){
-                            margin-right: 20px;
+                                margin-right: 20px;
                         }
                     }
                 }

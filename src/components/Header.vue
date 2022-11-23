@@ -8,9 +8,9 @@
                 <div class="logo__title">Portfolio</div>
             </div>
             <ul class="content__nav nav">
-                <li class="nav__item"><div class="item">Contacts</div> <div class="background"></div></li>
-                <li class="nav__item"><div class="item">Works</div> <div class="background"></div></li>
-                <li class="nav__item"><div class="item">Skills</div> <div class="background"></div></li>
+                <li @click="toContacts" class="nav__item"><div class="item">Contacts</div> <div class="background"></div></li>
+                <li @click="toWorks" class="nav__item"><div class="item">Works</div> <div class="background"></div></li>
+                <!-- <li class="nav__item"><div class="item">Skills</div> <div class="background"></div></li> -->
             </ul>
         </div>
     </header>
@@ -22,6 +22,17 @@ export default {
     data () {
         return {
             loaded: false
+        }
+    },
+    methods: {
+        toContacts () {
+            document.querySelector('.profile').scrollIntoView({behavior: "smooth", block: "center"})
+        },
+        toWorks () {
+            document.querySelector('.projects').scrollIntoView({behavior: "smooth", block: "start"})
+        },
+        toSkills () {
+            document.querySelector('.projects').scrollIntoView({behavior: "smooth", block: "start"})
         }
     },
     mounted() {

@@ -3,9 +3,7 @@
         <div class="projects-content iner-container">
             <div class="title">My projects</div>
             <div class="sites">
-                <projectcard/>
-                <projectcard/>
-                <projectcard/>
+                <projectcard v-for="project in this.$store.state.data" :projectdata="project"/>
             </div>
         </div>
     </section>
@@ -18,7 +16,6 @@ export default {
     components: {
         projectcard
     }
-    
 }
 </script>
 
