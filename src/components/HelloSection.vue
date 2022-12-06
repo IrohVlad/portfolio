@@ -14,9 +14,9 @@
                 <img class="img-3" src="../assets/Vector.svg" alt=""/>
             </div>
         </div>
-        <div class="drop1" ></div>
-        <div class="drop2" ></div>
-        <div class="drop3" ></div>
+        <div class="drop1" :style="'transform: rotate('+angel+'deg)'" ></div>
+        <div class="drop2" :style="'transform: rotate('+angel+'deg)'" ></div>
+        <div class="drop3" :style="'transform: rotate('+angel+'deg)'" ></div>
     </section>  
 </template>
 
@@ -26,10 +26,15 @@ export default {
     data() {
         return {
             loaded: false,
-            incline: 45
+            angel: 90 -(Math.atan(window.outerHeight/window.outerWidth) * 180 / 3.14),
+            d: Math.sqrt(Math.pow(window.outerHeight, 2) + Math.pow(window.outerWidth, 2))
         }
     },
     mounted() {
+        window.addEventListener('resize', ()=>{
+            this.angel = 90 -(Math.atan(window.outerHeight/window.outerWidth) * 180 / 3.14);
+            this.d = Math.sqrt(Math.pow(window.outerHeight, 2) + Math.pow(window.outerWidth, 2))
+        })
         this.$nextTick(() => {
             setTimeout(() => {
                 this.loaded = true 
@@ -59,56 +64,56 @@ export default {
         position: relative;
         @keyframes dropmove1 {
             0%{
-                top: -1000px;
-                right: -1000px;
+                top: calc(-15vh - 200px);
+                right: - 200px
             }
-            10%{
-                top: -1000px;
-                right: -1000px;
+            50%{
+                top: calc(-15vh - 200px);
+                right: -200px
             }
-            40%{
-                top: calc(100vh + 1000px);
-                right: calc(100vh + 1000px);
+            60%{
+                top: calc(85vh + 200px);
+                right: calc(100vw + 200px);
             }
             100%{
-                top: calc(100vh + 1000px);
-                right: calc(100vh + 1000px);
+                top: calc(85vh + 200px);
+                right: calc(100vw + 200px);
             }
         }
         @keyframes dropmove2 {
             0%{
-                top: -1000px;
-                right: calc(-30vh);
+                top: calc(-15vh - 200px);
+                right: calc(50vw - 200px);
             }
             10%{
-                top: -1000px;
-                right: calc(-30vh);
+                top: calc(-15vh - 200px);
+                right: calc(50vw - 200px);
             }
-            40%{
-                top: calc(100vh + 1000px);
-                right: calc(130vh);
+            20%{
+                top: calc(35vh + 200px);
+                right: calc(100vw + 200px);
             }
             100%{
-                top: calc(130vh + 1000px);
-                right: calc(130vh);
+                top: calc(35vh + 200px);
+                right: calc(100vw + 200px);
             }
         }
         @keyframes dropmove3 {
             0%{
-                top: -1000px;
-                right: -1000px;
+                top: calc(35vh - 200px);
+                right: -200px;
             }
-            10%{
-                top: -1000px;
-                right: -500px;
+            20%{
+                top: calc(35vh - 200px);
+                right: - 200px;
             }
-            60%{
-                top: calc(130vh + 1000px);
-                right: calc(80vh + 1000px);
+            30%{
+                top: calc(85vh + 200px);
+                right: calc(50vw + 200px);
             }
             100%{
-                top: calc(130vh + 1000px);
-                right: calc(80vh + 500px);
+                top: calc(85vh + 200px);
+                right: calc(50vw + 200px);
             }
         }
         .drop1{
@@ -120,7 +125,6 @@ export default {
             height: 200px;
             background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
             border-radius: 50px;
-            transform: rotate(45deg);
         }
         .drop2{
             z-index: 0;
@@ -131,7 +135,6 @@ export default {
             height: 200px;
             background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
             border-radius: 50px;
-            transform: rotate(45deg);
         }
         .drop3{
             z-index: 0;
@@ -142,7 +145,6 @@ export default {
             height: 200px;
             background: linear-gradient(0deg, #FFFFFF 0%, #0F0B0A 100%);
             border-radius: 50px;
-            transform: rotate(45deg);
         }
         height: var(--helloheight);
         .content{

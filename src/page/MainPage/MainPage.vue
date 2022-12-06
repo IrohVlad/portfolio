@@ -25,7 +25,7 @@
         },
         async created() {
             try{
-                const response = await fetch('http://62.113.105.113:5000/api/allinfo')
+                const response = await fetch('https://vladportfolio.ru/api/allinfo')
                 .then(items => items.json()).then(items => this.$store.commit('SET_PROJECTS', items))
             } catch(e){
                 console.log(e);

@@ -2,14 +2,14 @@
     <div class="site">
         <div class="card">
             <a :href="projectdata.link">
-                <img :src='"http://62.113.105.113:5000/"+projectdata.img' alt=""/>
+                <img :src='"https://vladportfolio.ru/"+projectdata.img' alt=""/>
             </a>
         </div>
         <div class="content showload">
             <div class="text">{{projectdata.desc}}</div>
             <div class="tech">
                 <div v-for="icon in projectdata.tech" class="icon">
-                    <img :src='"http://62.113.105.113:5000/"+icon.name' alt=""/>
+                    <img :src='"https://vladportfolio.ru/"+icon.name' alt=""/>
                 </div>
             </div>
         </div>
